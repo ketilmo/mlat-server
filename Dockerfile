@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
-RUN export BUILD_DEPS="gcc cmake make" && \
+RUN export BUILD_DEPS="gcc cmake make python3-setuptools" && \
     apt-get update && \
     apt-get -y install $BUILD_DEPS && \
     pip install --no-cache-dir -r requirements.txt && \
@@ -9,7 +9,7 @@ RUN export BUILD_DEPS="gcc cmake make" && \
     rm -rf /var/lib/apt/lists/*
 COPY . .
 RUN apt-get update && apt-get -y install gcc && \
-    python3 python3-setuptools setup.py build_ext --inplace && \
+    python3 setup.py build_ext --inplace && \
     apt-get purge -y --auto-remove gcc && \
     rm -rf /var/lib/apt/lists/*
 
