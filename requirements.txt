@@ -20,5 +20,3 @@ ujson==5.9.0
     # via -r requirements.in
 uvloop==0.19.0
     # via -r requirements.in
-setuptools=75.1.0
-    # via -r requirements.in
