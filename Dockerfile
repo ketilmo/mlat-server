@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
-RUN export BUILD_DEPS="gcc cmake make python3-setuptools" && \
+RUN export BUILD_DEPS="gcc cmake make" && \
     apt-get update && \
     apt-get -y install $BUILD_DEPS && \
     pip install --no-cache-dir -r requirements.txt && \
