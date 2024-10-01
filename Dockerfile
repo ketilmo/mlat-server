@@ -5,6 +5,7 @@ RUN export BUILD_DEPS="gcc cmake make" && \
     apt-get update && \
     apt-get -y install $BUILD_DEPS && \
     pip install --no-cache-dir -r requirements.txt && \
+    pip install -U pip setuptools && \
     apt-get purge -y --auto-remove $BUILD_DEPS && \
     rm -rf /var/lib/apt/lists/*
 COPY . .
