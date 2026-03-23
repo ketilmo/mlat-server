@@ -5,15 +5,11 @@ RUN export BUILD_DEPS="libopenblas-dev liblapack-dev libmpfr-dev libmpc-dev libg
     apt-get update && \
     apt-get -y install $BUILD_DEPS && \
     pip install --no-cache-dir -r requirements.txt && \
-    pip install -U pip setuptools && \
     apt-get purge -y --auto-remove $BUILD_DEPS && \
     rm -rf /var/lib/apt/lists/*
 COPY . .
 RUN apt-get update && apt-get -y install gcc && \
-    pip install setuptools && \
     python3 setup.py build_ext --inplace && \
     apt-get purge -y --auto-remove gcc && \
     rm -rf /var/lib/apt/lists/*
-
-COPY . .
 ENTRYPOINT ["python", "/app/mlat-server"]
